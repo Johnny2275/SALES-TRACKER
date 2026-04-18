@@ -1,0 +1,107 @@
+<main class="container">
+  <section class="hero">
+    <p class="badge">Simple · Fast · Offline</p>
+    <h1>Daily Sales Tracker</h1>
+    <p>
+      Record every sale in seconds, review your daily/monthly totals, and keep your
+      business decisions data-driven.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Add New Sale</h2>
+    <form id="sales-form" class="sales-form">
+      <label>
+        Date
+        <input id="sale-date" name="date" type="date" required />
+      </label>
+      <label>
+        Product / Service
+        <input id="sale-item" name="item" type="text" placeholder="e.g. Sneakers" required />
+      </label>
+      <label>
+        Category
+        <input id="sale-category" name="category" type="text" placeholder="e.g. Footwear" required />
+      </label>
+      <label>
+        Quantity
+        <input id="sale-quantity" name="quantity" type="number" min="1" step="1" value="1" required />
+      </label>
+      <label>
+        Unit Price (₦)
+        <input id="sale-price" name="price" type="number" min="0" step="0.01" required />
+      </label>
+      <label>
+        Payment Method
+        <select id="sale-payment" name="payment" required>
+          <option value="Cash">Cash</option>
+          <option value="Card">Card</option>
+          <option value="Transfer">Transfer</option>
+          <option value="Mobile Wallet">Mobile Wallet</option>
+        </select>
+      </label>
+      <label class="form-notes">
+        Notes (optional)
+        <textarea id="sale-notes" name="notes" rows="2" placeholder="Customer details, order ID, etc."></textarea>
+      </label>
+      <button class="btn btn-primary" type="submit">Save Sale</button>
+    </form>
+  </section>
+
+  <section class="stats-grid" aria-label="Sales summary cards">
+    <article class="stat-card">
+      <p>Today Revenue</p>
+      <h3 id="today-revenue">$0.00</h3>
+    </article>
+    <article class="stat-card">
+      <p>This Month Revenue</p>
+      <h3 id="month-revenue">$0.00</h3>
+    </article>
+    <article class="stat-card">
+      <p>Total Transactions</p>
+      <h3 id="transaction-count">0</h3>
+    </article>
+    <article class="stat-card">
+      <p>Average Order Value</p>
+      <h3 id="average-order">$0.00</h3>
+    </article>
+  </section>
+
+  <section class="panel">
+    <div class="table-header">
+      <h2>Sales History</h2>
+      <div class="actions">
+        <label class="inline-control">
+          Month
+          <input id="month-filter" type="month" />
+        </label>
+        <label class="inline-control">
+          Search
+          <input id="search-input" type="text" placeholder="Item, category, payment..." />
+        </label>
+        <button id="export-btn" class="btn btn-secondary" type="button">Export CSV</button>
+        <button id="clear-btn" class="btn btn-danger" type="button">Clear All</button>
+      </div>
+    </div>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Item</th>
+            <th>Category</th>
+            <th>Qty</th>
+            <th>Unit Price</th>
+            <th>Total</th>
+            <th>Payment</th>
+            <th>Notes</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="sales-table-body"></tbody>
+      </table>
+    </div>
+    <p id="empty-state" class="empty-state">No sales yet. Add your first sale above.</p>
+  </section>
+</main>
